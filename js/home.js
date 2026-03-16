@@ -4,6 +4,36 @@ let allCharacters = [];
 let currentPage = 1;
 let totalPages = 1;
 
+function getFavorites() {
+    const favorites = localStorage.getItem("favoriteCharacters");
+    return favorites ? JSON.parse(favorites) : [];
+}
+
+function saveFavorites(favorites) {
+    localStorage.setItem("favoriteCharacters", JSON.stringify(favorites));
+}
+
+function isFavorite(characterId) {
+    const favorites = getFavorites();
+    return favorites.some((favorite) => favorite.id === characterId);
+}
+
+function toggleFavorite(characterData) {
+    const favorites = getFavorites();
+    const favoriteExists = favorites.some((favorite) => favorite.id === characterData.id);
+
+    let updatedFavorites = [];
+
+    if (favoriteExists) {
+        updatedFavorites = favorites.filter((favorite) => favorite.id !== characterData.id);
+    } else {
+        updatedFavorites = [...favorites, characterData];
+    }
+
+    saveFavorites(updatedFavorites);
+    renderCharacters(allCharacters);
+}
+
 function showLoading() {
     document.getElementById("loadingMessage").style.display = "block";
 }
@@ -52,6 +82,19 @@ function renderCharacters(characters) {
 
     characters.forEach((character) => {
         const characterId = getCharacterId(character.url);
+        const favoriteText = isFavorite(characterId) ? "Remove from Favorites" : "Add to Favorites";
+
+        const characterData = {
+            id: characterId,
+            name: character.name,
+            height: character.height,
+            mass: character.mass,
+            hair_color: character.hair_color,
+            skin_color: character.skin_color,
+            eye_color: character.eye_color,
+            birth_year: character.birth_year,
+            gender: character.gender
+        };
 
         const characterCard = document.createElement("div");
 
@@ -60,9 +103,15 @@ function renderCharacters(characters) {
             <p><strong>Gender:</strong> ${character.gender}</p>
             <p><strong>Birth Year:</strong> ${character.birth_year}</p>
             <a href="./details.html?id=${characterId}">View Details</a>
+            <button class="favorite-button" data-id="${characterId}">${favoriteText}</button>
         `;
 
         charactersList.appendChild(characterCard);
+
+        const favoriteButton = characterCard.querySelector(".favorite-button");
+        favoriteButton.addEventListener("click", () => {
+            toggleFavorite(characterData);
+        });
     });
 }
 
@@ -79,7 +128,6 @@ function handleSearch() {
 
 function updatePaginationControls() {
     document.getElementById("pageInfo").textContent = `Page ${currentPage}`;
-
     document.getElementById("prevButton").disabled = currentPage === 1;
     document.getElementById("nextButton").disabled = currentPage === totalPages;
 }

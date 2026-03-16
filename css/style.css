@@ -213,3 +213,19 @@ button:disabled {
     opacity: 0.5;
     cursor: not-allowed;
 }
+
+#charactersList div,
+#favoritesList div {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#charactersList div:hover,
+#favoritesList div:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+}
+
+.favorite-button {
+    margin-top: 12px;
+    width: 100%;
+}
