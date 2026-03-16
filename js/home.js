@@ -1,6 +1,8 @@
 console.log("Home page loaded");
 
 let allCharacters = [];
+let currentPage = 1;
+let totalPages = 1;
 
 function showLoading() {
     document.getElementById("loadingMessage").style.display = "block";
@@ -10,15 +12,19 @@ function hideLoading() {
     document.getElementById("loadingMessage").style.display = "none";
 }
 
-async function loadCharacters() {
+async function loadCharacters(page = 1) {
     showLoading();
 
     try {
-        const response = await fetch("https://swapi.dev/api/people/");
+        const response = await fetch(`https://swapi.dev/api/people/?page=${page}`);
         const data = await response.json();
 
         allCharacters = data.results;
+        currentPage = page;
+        totalPages = Math.ceil(data.count / 10);
+
         renderCharacters(allCharacters);
+        updatePaginationControls();
 
     } catch (error) {
         console.error("Error fetching characters:", error);
@@ -45,7 +51,6 @@ function renderCharacters(characters) {
     }
 
     characters.forEach((character) => {
-
         const characterId = getCharacterId(character.url);
 
         const characterCard = document.createElement("div");
@@ -58,7 +63,6 @@ function renderCharacters(characters) {
         `;
 
         charactersList.appendChild(characterCard);
-
     });
 }
 
@@ -73,6 +77,25 @@ function handleSearch() {
     renderCharacters(filteredCharacters);
 }
 
+function updatePaginationControls() {
+    document.getElementById("pageInfo").textContent = `Page ${currentPage}`;
+
+    document.getElementById("prevButton").disabled = currentPage === 1;
+    document.getElementById("nextButton").disabled = currentPage === totalPages;
+}
+
 document.getElementById("searchInput").addEventListener("input", handleSearch);
+
+document.getElementById("prevButton").addEventListener("click", () => {
+    if (currentPage > 1) {
+        loadCharacters(currentPage - 1);
+    }
+});
+
+document.getElementById("nextButton").addEventListener("click", () => {
+    if (currentPage < totalPages) {
+        loadCharacters(currentPage + 1);
+    }
+});
 
 loadCharacters();
