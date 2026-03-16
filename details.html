@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Star Wars Explorer</title>
+  <title>Character Details</title>
   <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
@@ -21,27 +21,11 @@
   </header>
 
   <main>
-    <section class="search-section">
+    <section class="details-section">
       <div class="container">
-        <h2>Characters</h2>
-        <input 
-          type="text" 
-          id="searchInput" 
-          placeholder="Search for a character..."
-        >
-      </div>
-    </section>
-
-    <section class="loading-section">
-      <div class="container">
-        <p id="loadingMessage">Loading characters...</p>
-      </div>
-    </section>
-
-    <section class="characters-section">
-      <div class="container">
-        <div id="charactersList">
-          <!-- Characters will be rendered here -->
+        <h2>Character Details</h2>
+        <div id="characterDetails">
+          <!-- Character details will be rendered here -->
         </div>
       </div>
     </section>
@@ -53,6 +37,6 @@
     </div>
   </footer>
 
-  <script src="./js/home.js"></script>
+  <script src="./js/details.js"></script>
 </body>
 </html>
