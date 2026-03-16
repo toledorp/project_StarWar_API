@@ -1,2 +1,2 @@
-# project_StarWar_API
+# starwar-explore
 
