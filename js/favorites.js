@@ -33,14 +33,14 @@ function loadFavorites() {
             <p><strong>Height:</strong> ${character.height} cm</p>
             <p><strong>Mass:</strong> ${character.mass} kg</p>
             <p><strong>Gender:</strong> ${character.gender}</p>
-            <p><a href="./details.html?id=${character.id}">View details</a></p>
-            <button data-id="${character.id}">Remove from Favorites</button>
+            <a href="./details.html?id=${character.id}">View Details</a>
+            <button class="favorite-button" data-id="${character.id}">Remove from Favorites</button>
         `;
 
         favoritesList.appendChild(characterItem);
     });
 
-    const removeButtons = document.querySelectorAll("button");
+    const removeButtons = document.querySelectorAll(".favorite-button");
 
     removeButtons.forEach((button) => {
         button.addEventListener("click", () => {
