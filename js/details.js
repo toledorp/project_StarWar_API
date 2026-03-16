@@ -34,13 +34,25 @@ function toggleFavorite(character) {
     saveFavorites(updatedFavorites);
 }
 
+function showLoadingDetails() {
+    document.getElementById("loadingDetails").style.display = "block";
+}
+
+function hideLoadingDetails() {
+    document.getElementById("loadingDetails").style.display = "none";
+}
+
 async function loadCharacterDetails() {
     const characterId = getCharacterIdFromUrl();
+    const characterDetails = document.getElementById("characterDetails");
 
     if (!characterId) {
-        document.getElementById("characterDetails").innerHTML = "<p>Character not found.</p>";
+        characterDetails.innerHTML = "<p>Character not found.</p>";
         return;
     }
+
+    showLoadingDetails();
+    characterDetails.innerHTML = "";
 
     try {
         const response = await fetch(`https://swapi.dev/api/people/${characterId}/`);
@@ -59,8 +71,6 @@ async function loadCharacterDetails() {
             birth_year: character.birth_year,
             gender: character.gender
         };
-
-        const characterDetails = document.getElementById("characterDetails");
 
         characterDetails.innerHTML = `
             <h3>${character.name}</h3>
@@ -83,7 +93,9 @@ async function loadCharacterDetails() {
 
     } catch (error) {
         console.error("Error fetching character details:", error);
-        document.getElementById("characterDetails").innerHTML = "<p>Error loading character details.</p>";
+        characterDetails.innerHTML = "<p>Error loading character details.</p>";
+    } finally {
+        hideLoadingDetails();
     }
 }
 
