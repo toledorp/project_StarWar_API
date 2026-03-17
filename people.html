@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>People - Star Wars Explorer</title>
+  <title>Star Wars Explorer</title>
   <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
@@ -22,35 +22,49 @@
   </header>
 
   <main>
-    <section class="search-section">
+    <section class="hero-section">
       <div class="container">
-        <h2>Characters</h2>
-        <input
-          type="text"
-          id="searchInput"
-          placeholder="Search for a character..."
-        >
+        <h2>Explore the Star Wars Universe</h2>
+        <p>
+          Browse characters and discover other resources available in the Star Wars API.
+        </p>
       </div>
     </section>
 
-    <section class="loading-section">
+    <section class="resources-section">
       <div class="container">
-        <div id="loadingMessage">Loading characters...</div>
-      </div>
-    </section>
+        <div class="resource-grid">
 
-    <section class="characters-section">
-      <div class="container">
-        <div id="charactersList"></div>
-      </div>
-    </section>
+          <a class="resource-card" href="./people.html">
+            <h3>People</h3>
+            <p>Explore Star Wars characters, search by name, and save favorites.</p>
+          </a>
 
-    <section class="pagination-section">
-      <div class="container">
-        <div class="pagination-controls">
-          <button id="prevButton">Previous</button>
-          <span id="pageInfo">Page 1</span>
-          <button id="nextButton">Next</button>
+          <a class="resource-card" href="#">
+            <h3>Films</h3>
+            <p>Browse the Star Wars movies and their main information.</p>
+          </a>
+
+          <a class="resource-card" href="#">
+            <h3>Planets</h3>
+            <p>Discover planets from the Star Wars universe.</p>
+          </a>
+
+          <a class="resource-card" href="#">
+            <h3>Species</h3>
+            <p>Learn about the species that appear in Star Wars.</p>
+          </a>
+
+          <a class="resource-card" href="#">
+            <h3>Starships</h3>
+            <p>View famous ships used across the saga.</p>
+          </a>
+
+          <a class="resource-card" href="#">
+            <h3>Vehicles</h3>
+            <p>Check ground and air vehicles from the galaxy.</p>
+          </a>
+
         </div>
       </div>
     </section>
@@ -61,7 +75,5 @@
       <p>Star Wars Explorer - Frontend Challenge</p>
     </div>
   </footer>
-
-  <script src="./js/people.js"></script>
 </body>
 </html>
