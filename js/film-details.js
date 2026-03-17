@@ -35,22 +35,26 @@ async function fetchResources(urls) {
 
 function createResourceList(items, type) {
     if (items.length === 0) {
-        return "<li>Not available</li>";
+        return "<p>Not available</p>";
     }
 
-    return items.map((item) => {
-        const id = getResourceId(item.url);
+    return `
+        <div class="resource-grid-list">
+            ${items.map((item) => {
+                const id = getResourceId(item.url);
 
-        if (type === "people") {
-            return `<li><a href="./details.html?id=${id}">${item.name}</a></li>`;
-        }
+                if (type === "people") {
+                    return `<a class="resource-tag" href="./details.html?id=${id}">${item.name}</a>`;
+                }
 
-        if (type === "planets") {
-            return `<li><a href="./planet-details.html?id=${id}">${item.name}</a></li>`;
-        }
+                if (type === "planets") {
+                    return `<a class="resource-tag" href="./planet-details.html?id=${id}">${item.name}</a>`;
+                }
 
-        return `<li>${item.name}</li>`;
-    }).join("");
+                return `<span class="resource-tag">${item.name}</span>`;
+            }).join("")}
+        </div>
+    `;
 }
 
 async function loadFilmDetails() {
@@ -83,14 +87,14 @@ async function loadFilmDetails() {
 
             <div class="details-block">
                 <h4>Opening Crawl</h4>
-                <p>${film.opening_crawl.replace(/\r\n/g, "<br>")}</p>
+                <p class="opening-crawl-text">
+                    ${film.opening_crawl.replace(/[\r\n]+/g, " ").trim()}
+                </p>
             </div>
 
             <div class="details-block">
                 <h4>Characters</h4>
-                <ul>
                     ${createResourceList(characters, "people")}
-                </ul>
             </div>
 
             <div class="details-block">
@@ -104,7 +108,7 @@ async function loadFilmDetails() {
                 <h4>Starships</h4>
                 <ul>
                     ${createResourceList(starships, "starships")}
-                </ul>
+                
             </div>
         `;
     } catch (error) {
