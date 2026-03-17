@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Films - Star Wars Explorer</title>
+    <title>Film Details - Star Wars Explorer</title>
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
@@ -21,22 +21,12 @@
     </header>
 
     <main>
-      <section class="hero-section">
+      <section class="details-section">
         <div class="container">
-          <h2>Star Wars Films</h2>
-          <p>Explore the main movies from the Star Wars saga.</p>
-        </div>
-      </section>
-
-      <section class="loading-section">
-        <div class="container">
-          <div id="loadingFilms">Loading films...</div>
-        </div>
-      </section>
-
-      <section class="films-section">
-        <div class="container">
-          <div id="filmsList"></div>
+          <a href="./films.html" class="back-link">← Back to Films</a>
+          <h2>Film Details</h2>
+          <div id="loadingFilmDetails">Loading film details...</div>
+          <div id="filmDetails"></div>
         </div>
       </section>
     </main>
@@ -47,6 +37,6 @@
       </div>
     </footer>
 
-    <script src="./js/films.js"></script>
+    <script src="./js/film-details.js"></script>
   </body>
 </html>

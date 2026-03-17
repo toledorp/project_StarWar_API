@@ -8,6 +8,11 @@ function hideLoadingFilms() {
     document.getElementById("loadingFilms").style.display = "none";
 }
 
+function getFilmId(url) {
+    const parts = url.split("/").filter(Boolean);
+    return parts[parts.length - 1];
+}
+
 async function loadFilms() {
     showLoadingFilms();
 
@@ -37,6 +42,7 @@ function renderFilms(films) {
     const sortedFilms = [...films].sort((a, b) => a.episode_id - b.episode_id);
 
     sortedFilms.forEach((film) => {
+        const filmId = getFilmId(film.url);
         const filmCard = document.createElement("div");
 
         filmCard.innerHTML = `
@@ -45,6 +51,7 @@ function renderFilms(films) {
             <p><strong>Producer:</strong> ${film.producer}</p>
             <p><strong>Release Date:</strong> ${film.release_date}</p>
             <p><strong>Opening Crawl:</strong> ${film.opening_crawl.substring(0, 180)}...</p>
+            <a href="./film-details.html?id=${filmId}">More Details</a>
         `;
 
         filmsList.appendChild(filmCard);

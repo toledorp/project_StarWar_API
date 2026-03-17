@@ -110,7 +110,8 @@ button:disabled {
 
 #loadingMessage,
 #loadingDetails,
-#loadingFilms {
+#loadingFilms,
+#loadingFilmDetails {
     display: none;
     text-align: center;
     padding: 20px;
@@ -319,4 +320,37 @@ footer {
     .resource-grid {
         grid-template-columns: repeat(3, 1fr);
     }
+}
+
+.details-block {
+    margin-top: 24px;
+    padding-top: 10px;
+    border-top: 1px solid #2d3748;
+}
+
+.details-block h4 {
+    color: #ffd700;
+    margin-bottom: 12px;
+    font-size: 1.05rem;
+}
+
+.details-block ul {
+    padding-left: 20px;
+}
+
+.details-block li {
+    margin-bottom: 8px;
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 16px;
+    text-decoration: none;
+    color: #ffd700;
+    font-weight: bold;
+    transition: opacity 0.2s ease;
+}
+
+.back-link:hover {
+    opacity: 0.8;
 }
