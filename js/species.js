@@ -43,12 +43,23 @@ function renderSpecies(speciesListData) {
             <p><strong>Classification:</strong> ${species.classification}</p>
             <p><strong>Language:</strong> ${species.language}</p>
             <p><strong>Average Lifespan:</strong> ${species.average_lifespan}</p>
-
             <a href="./species-details.html?id=${id}">View Details</a>
         `;
 
         speciesList.appendChild(card);
     });
+
+    const unspecifiedCard = document.createElement("div");
+
+    unspecifiedCard.innerHTML = `
+        <h3>Unspecified Species</h3>
+        <p><strong>Classification:</strong> Unknown</p>
+        <p><strong>Language:</strong> Not informed</p>
+        <p><strong>Average Lifespan:</strong> Not informed</p>
+        <a href="./unspecified-species.html">View Details</a>
+    `;
+
+    speciesList.appendChild(unspecifiedCard);
 }
 
 loadSpecies();
