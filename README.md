@@ -4,21 +4,19 @@ A web application that explores characters from the Star Wars universe using the
 The project was developed using HTML, CSS, and Vanilla JavaScript, focusing on core frontend development concepts such as API consumption, DOM manipulation, responsive layouts, and browser storage.
 
 Features
-
 The application includes the following features:
-Character list fetched from the SWAPI
-Dynamic character cards displayed on the home page
-Search filter for characters (without reloading the page)
-Pagination to navigate through the API results
-Character details page with extended information
-Favorites system using LocalStorage
-Favorites page to manage saved characters
-Contact form with JavaScript validation
-Loading states while fetching data from the API
-Responsive layout using Flexbox and CSS Grid
+ * Character list fetched from the SWAPI
+ * Dynamic character cards displayed on the home page
+ * Search filter for characters (without reloading the page)
+ * Pagination to navigate through the API results
+ * Character details page with extended information
+ * Favorites system using LocalStorage
+ * Favorites page to manage saved characters
+ * Contact form with JavaScript validation
+ * Loading states while fetching data from the API
+ * Responsive layout using Flexbox and CSS Grid
 
 Technologies Used
-
 This project was built using:
 HTML5
 CSS3
@@ -27,7 +25,6 @@ SWAPI (Star Wars API)
 No frameworks or external libraries were used.
 
 Project Structure
-
 PROJECT_STARWAR_API
 │
 ├── assets
