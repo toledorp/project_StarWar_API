@@ -13,24 +13,48 @@ function hideLoadingPlanetDetails() {
     document.getElementById("loadingPlanetDetails").style.display = "none";
 }
 
-async function fetchResourceNames(urls) {
+function getResourceId(url) {
+    const parts = url.split("/").filter(Boolean);
+    return parts[parts.length - 1];
+}
+
+async function fetchResources(urls) {
     try {
         const requests = urls.map((url) => fetch(url).then((response) => response.json()));
         const results = await Promise.all(requests);
 
-        return results.map((item) => item.name || item.title);
+        return results.map((item) => ({
+            name: item.name || item.title,
+            url: item.url
+        }));
     } catch (error) {
         console.error("Error fetching related resources:", error);
         return [];
     }
 }
 
-function createListItems(items) {
+function createResourceList(items, type) {
     if (items.length === 0) {
-        return "<li>Not available</li>";
+        return "<p>Not available</p>";
     }
 
-    return items.map((item) => `<li>${item}</li>`).join("");
+    return `
+        <div class="resource-grid-list">
+            ${items.map((item) => {
+                const id = getResourceId(item.url);
+
+                if (type === "people") {
+                    return `<a class="resource-tag" href="./details.html?id=${id}">${item.name}</a>`;
+                }
+
+                if (type === "films") {
+                    return `<a class="resource-tag" href="./film-details.html?id=${id}">${item.name}</a>`;
+                }
+
+                return `<span class="resource-tag">${item.name}</span>`;
+            }).join("")}
+        </div>
+    `;
 }
 
 async function loadPlanetDetails() {
@@ -50,8 +74,8 @@ async function loadPlanetDetails() {
         const planet = await response.json();
 
         const [residents, films] = await Promise.all([
-            fetchResourceNames(planet.residents),
-            fetchResourceNames(planet.films)
+            fetchResources(planet.residents),
+            fetchResources(planet.films)
         ]);
 
         planetDetails.innerHTML = `
@@ -67,16 +91,12 @@ async function loadPlanetDetails() {
 
             <div class="details-block">
                 <h4>Residents</h4>
-                <ul>
-                    ${createListItems(residents)}
-                </ul>
+                ${createResourceList(residents, "people")}
             </div>
 
             <div class="details-block">
                 <h4>Films</h4>
-                <ul>
-                    ${createListItems(films)}
-                </ul>
+                ${createResourceList(films, "films")}
             </div>
         `;
     } catch (error) {
