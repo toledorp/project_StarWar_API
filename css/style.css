@@ -109,7 +109,8 @@ button:disabled {
 }
 
 #loadingMessage,
-#loadingDetails {
+#loadingDetails,
+#loadingFilms {
     display: none;
     text-align: center;
     padding: 20px;
@@ -122,7 +123,8 @@ button:disabled {
 }
 
 #charactersList,
-#favoritesList {
+#favoritesList,
+#filmsList {
     display: grid;
     grid-template-columns: 1fr;
     gap: 20px;
@@ -130,6 +132,7 @@ button:disabled {
 
 #charactersList div,
 #favoritesList div,
+#filmsList div,
 #characterDetails,
 form {
     background-color: #111827;
@@ -139,12 +142,14 @@ form {
 }
 
 #charactersList div,
-#favoritesList div {
+#favoritesList div,
+#filmeList div {
     transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 #charactersList div:hover,
-#favoritesList div:hover {
+#favoritesList div:hover,
+#filmList div:hover {
     transform: translateY(-4px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
     border-color: #ffd700;
@@ -152,6 +157,7 @@ form {
 
 #charactersList h3,
 #favoritesList h3,
+#filmsList h3,
 #characterDetails h3 {
     margin-bottom: 12px;
     color: #ffd700;
@@ -160,6 +166,7 @@ form {
 
 #charactersList p,
 #favoritesList p,
+#filmsList p,
 #characterDetails p {
     margin-bottom: 10px;
 }
@@ -244,14 +251,16 @@ footer {
     }
 
     #charactersList,
-    #favoritesList {
+    #favoritesList,
+    #filmsList {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (min-width: 1024px) {
     #charactersList,
-    #favoritesList {
+    #favoritesList,
+    #filmsList {
         grid-template-columns: repeat(3, 1fr);
     }
 }

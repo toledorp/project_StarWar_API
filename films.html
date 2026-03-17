@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>People - Star Wars Explorer</title>
+  <title>Films - Star Wars Explorer</title>
   <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
@@ -14,6 +14,7 @@
         <ul>
           <li><a href="./index.html">Home</a></li>
           <li><a href="./people.html">People</a></li>
+          <li><a href="./films.html">Films</a></li>
           <li><a href="./favorites.html">Favorites</a></li>
           <li><a href="./contact.html">Contact</a></li>
         </ul>
@@ -22,36 +23,22 @@
   </header>
 
   <main>
-    <section class="search-section">
+    <section class="hero-section">
       <div class="container">
-        <h2>Characters</h2>
-        <input
-          type="text"
-          id="searchInput"
-          placeholder="Search for a character..."
-        >
+        <h2>Star Wars Films</h2>
+        <p>Explore the main movies from the Star Wars saga.</p>
       </div>
     </section>
 
     <section class="loading-section">
       <div class="container">
-        <div id="loadingMessage">Loading characters...</div>
+        <div id="loadingFilms">Loading films...</div>
       </div>
     </section>
 
-    <section class="characters-section">
+    <section class="films-section">
       <div class="container">
-        <div id="charactersList"></div>
-      </div>
-    </section>
-
-    <section class="pagination-section">
-      <div class="container">
-        <div class="pagination-controls">
-          <button id="prevButton">Previous</button>
-          <span id="pageInfo">Page 1</span>
-          <button id="nextButton">Next</button>
-        </div>
+        <div id="filmsList"></div>
       </div>
     </section>
   </main>
@@ -62,6 +49,6 @@
     </div>
   </footer>
 
-  <script src="./js/people.js"></script>
+  <script src="./js/films.js"></script>
 </body>
 </html>
