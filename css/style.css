@@ -97,6 +97,7 @@ button {
     cursor: pointer;
     font-weight: bold;
     transition: opacity 0.2s ease;
+    margin-top: 10px;
 }
 
 button:hover {
