@@ -111,7 +111,8 @@ button:disabled {
 #loadingMessage,
 #loadingDetails,
 #loadingFilms,
-#loadingFilmDetails {
+#loadingFilmDetails,
+#loadingPlanetDetails {
     display: none;
     text-align: center;
     padding: 20px;

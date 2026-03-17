@@ -45,6 +45,10 @@ function createResourceList(items, type) {
             return `<li><a href="./details.html?id=${id}">${item.name}</a></li>`;
         }
 
+        if (type === "planets") {
+            return `<li><a href="./planet-details.html?id=${id}">${item.name}</a></li>`;
+        }
+
         return `<li>${item.name}</li>`;
     }).join("");
 }
