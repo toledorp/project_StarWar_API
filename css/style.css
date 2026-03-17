@@ -118,7 +118,9 @@ button:disabled {
 #loadingSpecies,
 #loadingSpeciesDetails,
 #loadingStarships,
-#loadingStarshipDetails {
+#loadingStarshipDetails,
+#loadingVehicles,
+#loadingVehicleDetails {
     display: none;
     text-align: center;
     padding: 20px;
@@ -135,7 +137,8 @@ button:disabled {
 #filmsList,
 #planetsList,
 #speciesList,
-#starshipsList {
+#starshipsList,
+#vehiclesList {
     display: grid;
     grid-template-columns: 1fr;
     gap: 20px;
@@ -147,6 +150,7 @@ button:disabled {
 #planetsList div,
 #speciesList div,
 #starshipsList div,
+#vehiclesList div,
 #characterDetails,
 form {
     background-color: #111827;
@@ -160,7 +164,8 @@ form {
 #filmsList div,
 #planetsList div,
 #speciesList div,
-#starshipsList div {
+#starshipsList div,
+#vehiclesList div {
     transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
@@ -169,7 +174,8 @@ form {
 #filmsList div:hover,
 #planetsList div:hover,
 #speciesList div:hover,
-#starshipsList div:hover {
+#starshipsList div:hover,
+#vehiclesList div:hover {
     transform: translateY(-4px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
     border-color: #ffd700;
@@ -181,6 +187,7 @@ form {
 #planetsList h3,
 #speciesList h3,
 #starshipsList h3,
+#vehiclesList h3,
 #characterDetails h3 {
     margin-bottom: 12px;
     color: #ffd700;
@@ -193,6 +200,7 @@ form {
 #planetsList p,
 #speciesList p,
 #starshipsList p,
+#vehiclesList p,
 #characterDetails p {
     margin-bottom: 10px;
 }
@@ -202,7 +210,8 @@ form {
 #filmsList a,
 #planetsList a,
 #speciesList a,
-#starshipsList a {
+#starshipsList a,
+#vehiclesList a {
     display: inline-block;
     margin-top: 8px;
     margin-bottom: 12px;
@@ -220,7 +229,8 @@ form {
 #filmsList a:hover,
 #planetsList a:hover,
 #speciesList a:hover,
-#starshipsList a:hover {
+#starshipsList a:hover,
+#vehiclesList a:hover {
     opacity: 0.9;
     text-decoration: none;
 }
@@ -289,7 +299,8 @@ footer {
     #filmsList,
     #planetsList,
     #speciesList,
-    #starshipsList {
+    #starshipsList,
+    #vehiclesList {
         grid-template-columns: repeat(2, 1fr);
     }
 }
@@ -300,7 +311,8 @@ footer {
     #filmsList,
     #planetsList,
     #speciesList,
-    #starshipsList {
+    #starshipsList,
+    #vehiclesList {
         grid-template-columns: repeat(3, 1fr);
     }
 }
