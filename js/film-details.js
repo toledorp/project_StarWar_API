@@ -13,24 +13,40 @@ function hideLoadingFilmDetails() {
     document.getElementById("loadingFilmDetails").style.display = "none";
 }
 
-async function fetchResourceNames(urls) {
+function getResourceId(url) {
+    const parts = url.split("/").filter(Boolean);
+    return parts[parts.length - 1];
+}
+
+async function fetchResources(urls) {
     try {
         const requests = urls.map((url) => fetch(url).then((response) => response.json()));
         const results = await Promise.all(requests);
 
-        return results.map((item) => item.name || item.title);
+        return results.map((item) => ({
+            name: item.name || item.title,
+            url: item.url
+        }));
     } catch (error) {
         console.error("Error fetching related resources:", error);
         return [];
     }
 }
 
-function createListItems(items) {
+function createResourceList(items, type) {
     if (items.length === 0) {
         return "<li>Not available</li>";
     }
 
-    return items.map((item) => `<li>${item}</li>`).join("");
+    return items.map((item) => {
+        const id = getResourceId(item.url);
+
+        if (type === "people") {
+            return `<li><a href="./details.html?id=${id}">${item.name}</a></li>`;
+        }
+
+        return `<li>${item.name}</li>`;
+    }).join("");
 }
 
 async function loadFilmDetails() {
@@ -50,9 +66,9 @@ async function loadFilmDetails() {
         const film = await response.json();
 
         const [characters, planets, starships] = await Promise.all([
-            fetchResourceNames(film.characters),
-            fetchResourceNames(film.planets),
-            fetchResourceNames(film.starships)
+            fetchResources(film.characters),
+            fetchResources(film.planets),
+            fetchResources(film.starships)
         ]);
 
         filmDetails.innerHTML = `
@@ -69,21 +85,21 @@ async function loadFilmDetails() {
             <div class="details-block">
                 <h4>Characters</h4>
                 <ul>
-                    ${createListItems(characters)}
+                    ${createResourceList(characters, "people")}
                 </ul>
             </div>
 
             <div class="details-block">
                 <h4>Planets</h4>
                 <ul>
-                    ${createListItems(planets)}
+                    ${createResourceList(planets, "planets")}
                 </ul>
             </div>
 
             <div class="details-block">
                 <h4>Starships</h4>
                 <ul>
-                    ${createListItems(starships)}
+                    ${createResourceList(starships, "starships")}
                 </ul>
             </div>
         `;
