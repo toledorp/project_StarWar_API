@@ -34,7 +34,7 @@ async function fetchResources(urls) {
 }
 
 function createResourceList(items, type) {
-    if (items.length === 0) {
+    if (!items.length) {
         return "<p>Not available</p>";
     }
 
@@ -49,6 +49,10 @@ function createResourceList(items, type) {
 
                 if (type === "planets") {
                     return `<a class="resource-tag" href="./planet-details.html?id=${id}">${item.name}</a>`;
+                }
+
+                if (type === "starships") {
+                    return `<a class="resource-tag" href="./starship-details.html?id=${id}">${item.name}</a>`;
                 }
 
                 return `<span class="resource-tag">${item.name}</span>`;
