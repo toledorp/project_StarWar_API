@@ -44,6 +44,7 @@ function renderFilms(films) {
     sortedFilms.forEach((film) => {
         const filmId = getFilmId(film.url);
         const filmCard = document.createElement("div");
+        filmCard.classList.add("content-card");
 
         filmCard.innerHTML = `
             <h3>Episode ${film.episode_id}: ${film.title}</h3>
@@ -51,7 +52,7 @@ function renderFilms(films) {
             <p><strong>Producer:</strong> ${film.producer}</p>
             <p><strong>Release Date:</strong> ${film.release_date}</p>
             <p><strong>Opening Crawl:</strong> ${film.opening_crawl.substring(0, 180)}...</p>
-            <a href="./film-details.html?id=${filmId}">More Details</a>
+            <a class="btn-primary" href="./film-details.html?id=${filmId}">More Details</a>
         `;
 
         filmsList.appendChild(filmCard);

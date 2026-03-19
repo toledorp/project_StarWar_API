@@ -1,11 +1,19 @@
 console.log("Vehicles page loaded");
 
+function showLoadingVehicles() {
+  document.getElementById("loadingVehicles").style.display = "block";
+}
+
+function hideLoadingVehicles() {
+  document.getElementById("loadingVehicles").style.display = "none";
+}
+
 async function loadVehicles() {
   const container = document.getElementById("vehiclesList");
 
-  try {
-    container.innerHTML = "Loading...";
+  showLoadingVehicles();
 
+  try {
     const response = await fetch("https://swapi.dev/api/vehicles/");
     const data = await response.json();
 
@@ -13,12 +21,12 @@ async function loadVehicles() {
       const id = vehicle.url.split("/").filter(Boolean).pop();
 
       return `
-        <div class="card">
+        <div class="content-card">
           <h3>${vehicle.name}</h3>
           <p><strong>Model:</strong> ${vehicle.model}</p>
           <p><strong>Manufacturer:</strong> ${vehicle.manufacturer}</p>
 
-          <a href="./vehicle-details.html?id=${id}">
+          <a class="btn-primary" href="./vehicle-details.html?id=${id}">
             View Details
           </a>
         </div>
@@ -26,8 +34,10 @@ async function loadVehicles() {
     }).join("");
 
   } catch (error) {
-    container.innerHTML = "Erro ao carregar veículos.";
+    container.innerHTML = "<p>Error loading vehicles.</p>";
     console.error(error);
+  } finally {
+    hideLoadingVehicles();
   }
 }
 

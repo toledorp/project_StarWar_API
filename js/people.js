@@ -119,12 +119,13 @@ function renderCharacters(characters) {
         };
 
         const characterCard = document.createElement("div");
+        characterCard.classList.add("content-card");
 
         characterCard.innerHTML = `
             <h3>${character.name}</h3>
             <p><strong>Gender:</strong> ${character.gender}</p>
             <p><strong>Birth Year:</strong> ${character.birth_year}</p>
-            <a href="./details.html?id=${characterId}">View Details</a>
+            <a class="btn-primary" href="./details.html?id=${characterId}">View Details</a>
             <button class="favorite-button" data-id="${characterId}">${favoriteText}</button>
         `;
 

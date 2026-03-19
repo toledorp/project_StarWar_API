@@ -43,12 +43,15 @@ function renderPlanets(planets) {
         const planetId = getPlanetId(planet.url);
         const planetCard = document.createElement("div");
 
+        // 🔥 NOVO PADRÃO
+        planetCard.classList.add("content-card");
+
         planetCard.innerHTML = `
             <h3>${planet.name}</h3>
             <p><strong>Climate:</strong> ${planet.climate}</p>
             <p><strong>Terrain:</strong> ${planet.terrain}</p>
             <p><strong>Population:</strong> ${planet.population}</p>
-            <a href="./planet-details.html?id=${planetId}">View Details</a>
+            <a class="btn-primary" href="./planet-details.html?id=${planetId}">View Details</a>
         `;
 
         planetsList.appendChild(planetCard);

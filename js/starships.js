@@ -38,13 +38,18 @@ function renderStarships(starships) {
 
         const card = document.createElement("div");
 
+        // 🔥 NOVO PADRÃO
+        card.classList.add("content-card");
+
         card.innerHTML = `
             <h3>${ship.name}</h3>
             <p><strong>Model:</strong> ${ship.model}</p>
             <p><strong>Manufacturer:</strong> ${ship.manufacturer}</p>
             <p><strong>Crew:</strong> ${ship.crew}</p>
 
-            <a href="./starship-details.html?id=${id}">View Details</a>
+            <a class="btn-primary" href="./starship-details.html?id=${id}">
+                View Details
+            </a>
         `;
 
         container.appendChild(card);

@@ -38,25 +38,30 @@ function renderSpecies(speciesListData) {
 
         const card = document.createElement("div");
 
+        // 🔥 NOVO PADRÃO
+        card.classList.add("content-card");
+
         card.innerHTML = `
             <h3>${species.name}</h3>
             <p><strong>Classification:</strong> ${species.classification}</p>
             <p><strong>Language:</strong> ${species.language}</p>
             <p><strong>Average Lifespan:</strong> ${species.average_lifespan}</p>
-            <a href="./species-details.html?id=${id}">View Details</a>
+            <a class="btn-primary" href="./species-details.html?id=${id}">View Details</a>
         `;
 
         speciesList.appendChild(card);
     });
 
+    // 🔥 CARD EXTRA (padronizado também)
     const unspecifiedCard = document.createElement("div");
+    unspecifiedCard.classList.add("content-card");
 
     unspecifiedCard.innerHTML = `
         <h3>Unspecified Species</h3>
         <p><strong>Classification:</strong> Unknown</p>
         <p><strong>Language:</strong> Not informed</p>
         <p><strong>Average Lifespan:</strong> Not informed</p>
-        <a href="./unspecified-species.html">View Details</a>
+        <a class="btn-primary" href="./unspecified-species.html">View Details</a>
     `;
 
     speciesList.appendChild(unspecifiedCard);
