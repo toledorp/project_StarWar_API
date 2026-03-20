@@ -1,108 +1,165 @@
-Star Wars Explorer
+# Star Wars Explorer
 
-A web application that explores characters from the Star Wars universe using the SWAPI (Star Wars API).
-The project was developed using HTML, CSS, and Vanilla JavaScript, focusing on core frontend development concepts such as API consumption, DOM manipulation, responsive layouts, and browser storage.
+Star Wars Explorer is a web application built with HTML, CSS, and Vanilla JavaScript that consumes the SWAPI (Star Wars API) to explore multiple resources from the Star Wars universe.
 
-Features
-The application includes the following features:
- * Character list fetched from the SWAPI
- * Dynamic character cards displayed on the home page
- * Search filter for characters (without reloading the page)
- * Pagination to navigate through the API results
- * Character details page with extended information
- * Favorites system using LocalStorage
- * Favorites page to manage saved characters
- * Contact form with JavaScript validation
- * Loading states while fetching data from the API
- * Responsive layout using Flexbox and CSS Grid
+The project focuses on core frontend concepts such as API consumption, DOM manipulation, responsive design, and client-side data persistence.
 
-Technologies Used
-This project was built using:
- * HTML5
- * CSS3
- * Vanilla JavaScript
- * SWAPI (Star Wars API)
+---
+
+## Application Preview
+
+![Home Screenshot](./img/screenshot-home.png)
+![People Screenshot](./img/screenshot-people.png)
+
+---
+
+## Features
+
+The application includes:
+
+- Home page with visual navigation cards
+- Characters module:
+  - dynamic listing
+  - search functionality
+  - pagination
+  - character details page
+  - favorites system using LocalStorage
+- Films module:
+  - film listing
+  - film details with related resources
+- Planets module:
+  - planet listing
+  - planet details with residents and films
+- Species module:
+  - species listing
+  - species details
+  - additional page for unspecified species
+- Starships module:
+  - starship listing
+  - starship details with pilots
+- Vehicles module:
+  - vehicle listing
+  - vehicle details
+- Favorites page for managing saved characters
+- Contact form with validation
+- Loading states during API requests
+- Responsive layout using CSS Grid and Flexbox
+
+---
+
+## Technologies
+
+- HTML5
+- CSS3
+- JavaScript (Vanilla)
+- SWAPI (https://swapi.dev/)
+
 No frameworks or external libraries were used.
 
-Project Structure
-PROJECT_STARWAR_API
-|
-|-- assets
-|
+---
 
-│
-├── assets
+## Project Structure
+
+```text
+FINAL-STAR_WARS
 │
 ├── css
 │   └── style.css
 │
+├── img
+│   ├── films.jpg
+│   ├── people.jpg
+│   ├── planets.jpg
+│   ├── species.jpg
+│   ├── starships.jpg
+│   ├── vehicles.jpg
+│   ├── screenshot-home.png
+│   └── screenshot-people.png
+│
 ├── js
-│   ├── home.js
+│   ├── contact.js
 │   ├── details.js
 │   ├── favorites.js
-│   └── contact.js
+│   ├── film-details.js
+│   ├── films.js
+│   ├── home.js
+│   ├── people.js
+│   ├── planet-details.js
+│   ├── planets.js
+│   ├── species-details.js
+│   ├── species.js
+│   ├── starship-details.js
+│   ├── starships.js
+│   ├── unspecified-species.js
+│   ├── vehicle-details.js
+│   └── vehicles.js
 │
-├── index.html
+├── contact.html
 ├── details.html
 ├── favorites.html
-├── contact.html
+├── film-details.html
+├── films.html
+├── index.html
+├── people.html
+├── planet-details.html
+├── planets.html
+├── species-details.html
+├── species.html
+├── starship-details.html
+├── starships.html
+├── unspecified-species.html
+├── vehicle-details.html
+├── vehicles.html
 └── README.md
+```
 
-How to Run the Project
-1 - Clone this repository:
-git clone https://github.com/toledorp/project_StarWar_API
+## How ro Run
+1. Clone the repository:<br>
+   git clone https://github.com/toledorp/project_StarWar_API
+2. Open the project folder.
+3. Run using Live Server or open index.html in your browser.
 
-2 - Open the project folder.
+## API
+This project uses the public SWAPI:<br>
+https://swapi.dev/api/<br>
 
-3 - Open the file:
-index.html
-in your browser.
-You can also use VS Code Live Server for a better development experience.
+Endpoints used:<br>
+- /people/
+- /films/
+- /planets/
+- /species/
+- /starships/
+- /vehicles/
 
-API Used
-This project uses the public Star Wars API (SWAPI).
-Base URL:
-https://swapi.dev/api/
-
-Example endpoint used:
-https://swapi.dev/api/people/
-
-Favorites System
-Favorite characters are stored locally using:
-localStorage
-
-This allows users to:
-  * Save favorite characters
-  * Remove favorites
-  * View favorites on a dedicated page
-
-The stored key used in the browser is:
+## Data Persistence
+Favorite characters are stored using LocalStorage with the key:
 favoriteCharacters
 
-Form Validation
-The contact form validates:
-  * Required fields
-  * Valid email format
-All validation is handled on the client side using JavaScript.
+## Form Validation
+The contact from validates:
+- **required fields**
+- **email format**
+Validation is handled on the client side using JavaScript.
 
-Challenges and Decisions
-Some implementation decisions made during development include:
-  * Using pagination to handle the limited number of characters returned per API request.
-  * Implementing a search filter that works on the currently loaded characters to keep the  
-    interface responsive.
-  * Using LocalStorage to persist user favorites without requiring a backend.
-  * Creating a simple loading state to improve user experience during API calls.
+## Challenges and Decisions
+During development, several challenges were identified and addresed
+- **API Structure and Navigation**<br>
+Managing relationships betwen resource (films, planets, spicies, starship) required creating dynamic navigation betwen pages.
+- **Pagination Implementation**<br>
+A custom pagination system was implemented to control the number of characters displayed per page.
+- **Lack of Images in API**<br>
+Since SWAPI does not provide images, static images were added for the homepage and visual improvements.
+- **Handling Missing Data**<br>
+Some characters do not have defined species, leading to the creation of a dedicated page for unspecified species.
+- **State Management Without Frameworks**<br>
+Favorites and UI updates were handled using LocalStorage and manual DOM manipulation.
+- **Responsive Design**<br>
+Layout adjustments were implemented using CSS Grid and Flexbox to ensure compatibility across different screen sizes.
+- **Code Organization**<br>
+The project was divided into multiple JavaScript files, each responsible for a specific resource, improving maintainability.
 
-Possible Improvements
-Future improvements could include:
-  * Character images integration
-  * Advanced search across all pages
-  * Better loading animations
-  * UI enhancements and animations
-  * Dark/light theme switch
+## Author
+Developed as part of a frontend development assignment.
 
-Author
-Developed as part of a frontend development challenge.
-
-License
-This project is intended for educational purposes.
+## License
+This project is intended for educational purpose
